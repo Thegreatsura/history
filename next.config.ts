@@ -21,6 +21,19 @@ const nextConfig: NextConfig = {
     maxInactiveAge: 60 * 1000, // Increased to 60 seconds to prevent page disposal when switching tabs
     pagesBufferLength: 5, // Increased buffer to keep more pages in memory
   },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: 'https://history.valyu.ai',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
